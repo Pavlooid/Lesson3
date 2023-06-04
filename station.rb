@@ -1,30 +1,22 @@
 class Station
-  @@trains = []
-  $trains = {}
+  attr_reader :trains
 
   def initialize(name)
     @name = name
+    @trains = []
   end
 
-  def add_trains(train, type)
-    @type = type
-    @train = train
-    @@trains << train
-    $trains[train] = type
-    puts "Train #{train}(#{type}) arrived on station."
+  def add_train(train)
+    @trains << train
+    puts "Train #{train} arrived on station."
   end
 
-  def show_trains
-    return @@trains
-  end
-
-  def show_trains_by_type
-    return $trains
+  def trains_by_type(type)
+    trains.select{|train| train.type == type}
   end
 
   def send_train(train)
-    @@trains.delete(train)
-    $trains.delete(train)
+    @trains.delete(train)
     puts "#{train} was succesfully send from station."
   end
 

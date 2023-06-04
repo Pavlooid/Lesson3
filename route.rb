@@ -1,24 +1,17 @@
 class Route
-$stations = []
+  attr_reader :stations
 
   def initialize(first, last)
-    @first = first
-    $last = last
-    $stations << first
-    $stations << last
+    @stations = [first, last]
   end
 
-  def add(place, station) # Укажите промежуток для добавления станции
-    @place = place.to_f
-    @station = station
-    $stations.insert(place, station)
+  def add(position, station) # Укажите промежуток для добавления станции
+    stations.insert(position, station)
   end
 
   def delete(station)
-    $stations.delete(station)
+    return "Can't delete first or last station." if (station == stations.first) || (staton == stations.last)
+    stations.delete(station)
   end
 
-  def show
-    return $stations
-  end
 end
