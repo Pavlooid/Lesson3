@@ -37,14 +37,14 @@ class Train
 
   def move_forward
     current_station.send_train(self)
-    current_station.add_train(self)
     @index += 1
+    current_station.add_train(self)
   end
 
   def move_back
     current_station.send_train(self)
-    current_station.add_train(self)
     @index -= 1
+    current_station.add_train(self)
   end
 
   def current_station
